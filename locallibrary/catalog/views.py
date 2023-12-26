@@ -21,7 +21,7 @@ def index(request):
     num_genres = Genre.objects.all().count()
 
     # Count for books that include the word 'the' (case-insensitive)
-    num_books_the = Book.objects.filter(title__contains='the').count()
+    num_books_the = Book.objects.filter(title__icontains='the').count()
 
     context = {
         'num_books': num_books,
