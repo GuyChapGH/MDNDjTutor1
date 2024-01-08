@@ -23,13 +23,18 @@ def index(request):
     # Count for books that include the word 'the' (case-insensitive)
     num_books_the = Book.objects.filter(title__icontains='the').count()
 
+    # Using session to track number of visits by browser to LocalLibrary Home page 
+    num_visits = request.session.get('num_books', 0)
+    request.session['num_books'] = num_visits + 1
+
     context = {
         'num_books': num_books,
         'num_instances': num_instances,
         'num_instances_available': num_instances_available,
         'num_authors': num_authors,
         'num_genres': num_genres,
-        'num_books_the': num_books_the,    
+        'num_books_the': num_books_the,
+        'num_visits': num_visits,    
     }
 
     # Render the index.html template with the data from context variable 

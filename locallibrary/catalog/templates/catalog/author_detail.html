@@ -11,7 +11,7 @@
     <ul>
     {% for book in author.book_set.all %}
         <li>
-        <a href="{{ book.get_absolute_url }}"> {{ book.title }}</a>
+        <a href="{{ book.get_absolute_url }}"> {{ book.title }}</a>({{ book.bookinstance_set.all.count }})
         <br>
         {{ book.summary }}
         </li>
