@@ -24,6 +24,10 @@
                     <li><a href="{% url 'books' %}">All books</a></li>
                     <li><a href="{% url 'authors' %}">All authors</a></li>
                   </ul>
+                  <form id="logout-form" method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Log out</button>
+                  </form>
                 {% endblock %}
               </div>
               <div class="col-sm-10 ">{% block content %}{% endblock %}{% block pagination %}
